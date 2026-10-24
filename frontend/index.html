@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro | InmoConecta</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/registro.js" defer></script>
+</head>
+<body>
+  <header class="cabecera"><a class="marca" href="index.html">Inmo<span>Conecta</span></a><span>Tu próximo espacio empieza aquí</span></header>
+  <main class="contenedor">
+    <section class="presentacion" aria-labelledby="titulo-presentacion">
+      <p class="etiqueta">PERSONAS, ESPACIOS Y NUEVOS COMIENZOS</p>
+      <h1 id="titulo-presentacion">Un lugar para conectar con tu próximo hogar.</h1>
+      <p>Encuentra opciones para vivir o comparte una propiedad con quienes están buscando su próximo espacio.</p>
+      <div class="beneficio"><span aria-hidden="true">01</span><div><h2>Encuentra tu espacio</h2><p>Una cuenta para comenzar como comprador o arrendatario.</p></div></div>
+      <div class="beneficio"><span aria-hidden="true">02</span><div><h2>Conecta con interesados</h2><p>Participa como agente o propietario de un inmueble.</p></div></div>
+      <p class="nota">Proyecto académico · Primer avance de registro</p>
+    </section>
+    <section class="tarjeta" aria-labelledby="titulo-formulario">
+      <p class="etiqueta">BIENVENIDO A INMOCONECTA</p>
+      <h2 id="titulo-formulario">Crea tu cuenta</h2>
+      <p class="introduccion">Completa tus datos. Todos los campos son obligatorios.</p>
+      <p class="aviso">Modo demostración: puedes validar el formulario, pero aún no se crean cuentas ni se guardan datos.</p>
+      <!-- novalidate permite presentar mensajes propios y accesibles desde JavaScript. -->
+      <form id="formulario-registro" novalidate>
+        <div class="fila">
+          <div class="campo"><label for="nombre">Nombre</label><input id="nombre" name="nombre" autocomplete="given-name" maxlength="80" required aria-describedby="error-nombre"><small id="error-nombre" class="error"></small></div>
+          <div class="campo"><label for="apellido">Apellido</label><input id="apellido" name="apellido" autocomplete="family-name" maxlength="80" required aria-describedby="error-apellido"><small id="error-apellido" class="error"></small></div>
+        </div>
+        <div class="campo"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" maxlength="25" placeholder="Ej. +57 300 123 4567" required aria-describedby="ayuda-telefono error-telefono"><small id="ayuda-telefono">Entre 7 y 15 dígitos; puedes usar espacios, guiones y prefijo +.</small><small id="error-telefono" class="error"></small></div>
+        <div class="campo"><label for="correo">Correo electrónico</label><input id="correo" name="correo" type="email" autocomplete="email" maxlength="254" placeholder="tu@correo.com" required aria-describedby="error-correo"><small id="error-correo" class="error"></small></div>
+        <div class="campo"><label for="contrasena">Contraseña</label><div class="clave"><input id="contrasena" name="contrasena" type="password" autocomplete="new-password" minlength="12" maxlength="128" required aria-describedby="ayuda-contrasena error-contrasena"><button id="mostrar-clave" type="button" aria-controls="contrasena" aria-pressed="false">Mostrar</button></div><small id="ayuda-contrasena">Usa entre 12 y 128 caracteres. Puedes utilizar una frase.</small><small id="error-contrasena" class="error"></small></div>
+        <div class="campo"><label for="rol">¿Cómo quieres participar?</label><select id="rol" name="rol" required aria-describedby="error-rol"><option value="">Selecciona tu rol</option><option value="COMPRADOR">Comprador / arrendatario</option><option value="AGENTE">Agente / propietario</option></select><small id="error-rol" class="error"></small></div>
+        <button class="boton-principal" type="submit">Validar registro</button>
+        <p id="resultado" role="status" aria-live="polite" tabindex="-1"></p>
+      </form>
+      <noscript>Activa JavaScript para probar las validaciones de este formulario.</noscript>
+    </section>
+  </main>
+  <footer>InmoConecta · Encuentra un espacio, conecta con una oportunidad.</footer>
+</body>
+</html>
