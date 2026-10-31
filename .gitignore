@@ -17,4 +17,5 @@ application-local.yml
 # Archivos temporales
 ~$*
 Thumbs.db
-.DS_Storebackend/out/
+.DS_Store
+backend/out/
