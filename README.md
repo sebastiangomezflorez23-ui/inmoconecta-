@@ -6,7 +6,7 @@ propiedades en venta o arriendo.
 ## Tecnologías previstas
 
 - Interfaz: HTML, CSS y JavaScript.
-- Servidor: Java con Spring Boot.
+- Servidor: Java 21 con HttpServer del JDK y acceso a MySQL mediante JDBC.
 - Base de datos: MySQL.
 
 ## Primer avance — HU-01 Registro de usuario
@@ -55,7 +55,7 @@ La longitud de contraseña es una propuesta de este avance, pendiente de acuerdo
 
 ## Continuación para el compañero
 
-1. Preparar Java con Spring Boot y la conexión MySQL mediante configuración local.
+1. Preparar Java 21 con HttpServer del JDK y acceso a MySQL mediante JDBC y la conexión MySQL mediante configuración local.
 2. Acordar el contrato del endpoint de registro antes de conectar el formulario.
 3. Crear la tabla de usuarios con correo único y almacenamiento del hash de contraseña.
 4. Validar los datos y roles en el servidor, rechazar correos repetidos y generar
