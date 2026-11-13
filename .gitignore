@@ -19,3 +19,4 @@ application-local.yml
 Thumbs.db
 .DS_Store
 backend/out/
+backend/lib/*.jar
