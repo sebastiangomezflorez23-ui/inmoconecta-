@@ -1,44 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro | InmoConecta</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="js/registro.js" defer></script>
-</head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Explora propiedades de demostración en el Valle de Aburrá con InmoConecta."><title>Tu próximo espacio | InmoConecta</title><link rel="stylesheet" href="css/inicio.css"><script src="js/inicio.js" defer></script></head>
 <body>
-  <header class="cabecera"><a class="marca" href="index.html">Inmo<span>Conecta</span></a><span>Tu próximo espacio empieza aquí</span></header>
-  <main class="contenedor">
-    <section class="presentacion" aria-labelledby="titulo-presentacion">
-      <p class="etiqueta">PERSONAS, ESPACIOS Y NUEVOS COMIENZOS</p>
-      <h1 id="titulo-presentacion">Un lugar para conectar con tu próximo hogar.</h1>
-      <p>Encuentra opciones para vivir o comparte una propiedad con quienes están buscando su próximo espacio.</p>
-      <div class="beneficio"><span aria-hidden="true">01</span><div><h2>Encuentra tu espacio</h2><p>Una cuenta para comenzar como comprador o arrendatario.</p></div></div>
-      <div class="beneficio"><span aria-hidden="true">02</span><div><h2>Conecta con interesados</h2><p>Participa como agente o propietario de un inmueble.</p></div></div>
-      <p class="nota">Proyecto académico · Primer avance de registro</p>
-    </section>
-    <section class="tarjeta" aria-labelledby="titulo-formulario">
-      <p class="etiqueta">BIENVENIDO A INMOCONECTA</p>
-      <h2 id="titulo-formulario">Crea tu cuenta</h2>
-      <p class="introduccion">Completa tus datos. Todos los campos son obligatorios.</p>
-      <p class="aviso">Modo demostración: puedes validar el formulario, pero aún no se crean cuentas ni se guardan datos.</p>
-      <!-- novalidate permite presentar mensajes propios y accesibles desde JavaScript. -->
-      <form id="formulario-registro" novalidate>
-        <div class="fila">
-          <div class="campo"><label for="nombre">Nombre</label><input id="nombre" name="nombre" autocomplete="given-name" maxlength="80" required aria-describedby="error-nombre"><small id="error-nombre" class="error"></small></div>
-          <div class="campo"><label for="apellido">Apellido</label><input id="apellido" name="apellido" autocomplete="family-name" maxlength="80" required aria-describedby="error-apellido"><small id="error-apellido" class="error"></small></div>
-        </div>
-        <div class="campo"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" maxlength="25" placeholder="Ej. +57 300 123 4567" required aria-describedby="ayuda-telefono error-telefono"><small id="ayuda-telefono">Entre 7 y 15 dígitos; puedes usar espacios, guiones y prefijo +.</small><small id="error-telefono" class="error"></small></div>
-        <div class="campo"><label for="correo">Correo electrónico</label><input id="correo" name="correo" type="email" autocomplete="email" maxlength="254" placeholder="tu@correo.com" required aria-describedby="error-correo"><small id="error-correo" class="error"></small></div>
-        <div class="campo"><label for="contrasena">Contraseña</label><div class="clave"><input id="contrasena" name="contrasena" type="password" autocomplete="new-password" minlength="12" maxlength="128" required aria-describedby="ayuda-contrasena error-contrasena"><button id="mostrar-clave" type="button" aria-controls="contrasena" aria-pressed="false">Mostrar</button></div><small id="ayuda-contrasena">Usa entre 12 y 128 caracteres. Puedes utilizar una frase.</small><small id="error-contrasena" class="error"></small></div>
-        <div class="campo"><label for="rol">¿Cómo quieres participar?</label><select id="rol" name="rol" required aria-describedby="error-rol"><option value="">Selecciona tu rol</option><option value="COMPRADOR">Comprador / arrendatario</option><option value="AGENTE">Agente / propietario</option></select><small id="error-rol" class="error"></small></div>
-        <button class="boton-principal" type="submit">Validar registro</button>
-        <p id="resultado" role="status" aria-live="polite" tabindex="-1"></p>
-      </form>
-      <noscript>Activa JavaScript para probar las validaciones de este formulario.</noscript>
-    </section>
-  </main>
-  <footer>InmoConecta · Encuentra un espacio, conecta con una oportunidad.</footer>
-</body>
-</html>
+<a href="#contenido" class="skip">Saltar al contenido</a>
+<header class="wrap top"><a class="brand" href="index.html" aria-label="InmoConecta, inicio"><span class="mark" aria-hidden="true">⌂</span>InmoConecta</a><nav aria-label="Navegación principal"><a href="index.html" aria-current="page">Inicio</a><a href="#propiedades">Propiedades</a><a class="button light" href="registro.html">Registrarme ↗</a></nav><span class="pill">DEMO ACADÉMICA</span></header>
+<main id="contenido">
+<section class="wrap hero" aria-labelledby="titulo"><div><p class="eyebrow">NUEVOS ESPACIOS. NUEVOS COMIENZOS.</p><h1 id="titulo">Tu próximo hogar,<br><em>más cerca de ti.</em></h1><p class="intro">Un lugar para descubrir propiedades en venta y arriendo en el Valle de Aburrá. Explora, imagina y encuentra tu próximo espacio.</p><div class="actions"><a class="button" href="#propiedades">Explorar propiedades ↗</a><a class="button light" href="registro.html">Registrarme</a></div><p class="hero-note">Hecho para conectar personas con nuevas oportunidades.</p></div><div class="hero-art"><img src="assets/casa.svg" alt="Ilustración de una casa rodeada de vegetación y montañas" width="600" height="540"><div class="art-label"><div>Imagina tu siguiente capítulo<strong>Un espacio para hacerlo tuyo.</strong></div><span aria-hidden="true">↗</span></div></div></section>
+<section class="wrap catalog" id="propiedades" aria-labelledby="titulo-propiedades"><div class="section-heading"><div><p class="eyebrow">ENCUENTRA TU ESPACIO</p><h2 id="titulo-propiedades">Pequeñas búsquedas.<br>Grandes comienzos.</h2></div><p>Explora esta selección de ejemplo. Las propiedades, ilustraciones y precios son ficticios; no son ofertas reales.</p></div>
+<div class="filters" role="group" aria-label="Filtrar propiedades de demostración"><div><label for="operacion">¿Qué estás buscando?</label><select id="operacion"><option value="">Venta y arriendo</option><option value="venta">Comprar</option><option value="arriendo">Arrendar</option></select></div><div><label for="municipio">¿Dónde quieres vivir?</label><select id="municipio"><option value="">Todos los municipios</option><option value="Medellín">Medellín</option><option value="Envigado">Envigado</option></select></div><button id="restablecer" class="button light" type="button">Restablecer filtros</button></div>
+<div class="results-line"><p id="contador" role="status" aria-live="polite" aria-atomic="true"></p><span>Catálogo de demostración</span></div><div class="cards" id="lista-propiedades"></div><div class="empty" id="sin-resultados" hidden><h3>No encontramos ejemplos con estos filtros</h3><p>Prueba otro municipio u operación, o pulsa «Restablecer filtros» para ver todas las propiedades.</p></div><noscript>Activa JavaScript para ver las propiedades de ejemplo y utilizar los filtros. Puedes acceder al registro desde el menú.</noscript></section>
+<section class="steps" aria-labelledby="como-funciona"><div class="wrap steps-grid"><div><p class="eyebrow">ASÍ EMPIEZA TU BÚSQUEDA</p><h2 id="como-funciona">El primer paso<br>es imaginarlo.</h2></div><div><span class="step-number" aria-hidden="true">01 /</span><h3>Explora a tu ritmo</h3><p>Elige venta o arriendo y el municipio que te interesa. Compara los espacios de nuestra selección de ejemplo.</p></div><div><span class="step-number" aria-hidden="true">02 /</span><h3>Conoce el registro</h3><p>Prueba el formulario como comprador o agente. En esta demo puedes validar tus datos; aún no se crea una cuenta desde la interfaz.</p></div></div></section>
+<section class="wrap closing" aria-labelledby="siguiente"><div><p class="eyebrow">TU HISTORIA EMPIEZA AQUÍ</p><h2 id="siguiente">Dale espacio a un nuevo comienzo.</h2><p>Conoce el formulario de registro con datos ficticios.</p></div><a class="button" href="registro.html">Probar el registro ↗</a></section></main>
+<footer class="wrap footer"><span>InmoConecta · Personas, espacios y oportunidades.</span><span>Proyecto académico · Demo local · 2026</span></footer>
+</body></html>
