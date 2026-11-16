@@ -5,6 +5,13 @@ const resultado = document.querySelector("#resultado");
 const campos = Array.from(formulario.querySelectorAll("input, select"));
 const contrasena = document.querySelector("#contrasena");
 const mostrarClave = document.querySelector("#mostrar-clave");
+const botonEnviar = formulario.querySelector('[type="submit"]');
+const modoArchivo = location.protocol === "file:";
+let enviando = false;
+document.querySelector("#modo-registro").textContent = modoArchivo
+  ? "Modo demostración: se validan los campos, pero no se crean cuentas. Para registrar, abre http://127.0.0.1:8080 con el servidor iniciado."
+  : "Crea tu cuenta como comprador o agente. Tus datos se enviarán al servidor local.";
+botonEnviar.textContent = modoArchivo ? "Validar registro" : "Crear cuenta";
 
 // Devuelve un mensaje si el dato falla; una cadena vacía significa que es válido.
 function validarCampo(campo) {
@@ -64,9 +71,10 @@ mostrarClave.addEventListener("click", () => {
   mostrarClave.setAttribute("aria-pressed", String(visible));
 });
 
-formulario.addEventListener("submit", (evento) => {
+formulario.addEventListener("submit", async (evento) => {
   // Evita recargar la página o enviar contraseñas mediante la URL.
   evento.preventDefault();
+  if (enviando) return;
   const camposInvalidos = campos.filter((campo) => mostrarError(campo));
   if (camposInvalidos.length) {
     resultado.className = "fallo";
@@ -75,8 +83,70 @@ formulario.addEventListener("submit", (evento) => {
     return;
   }
 
-  // Esta demostración no envía ni almacena datos, contraseñas o cuentas.
+  if (modoArchivo) {
   resultado.className = "exito";
-  resultado.textContent = "Los datos cumplen las validaciones del formulario. No se ha creado una cuenta: falta conectar el servidor Java y MySQL.";
+  resultado.textContent = "Los datos cumplen las validaciones del formulario. No se ha creado una cuenta: abre el sitio desde el servidor local para registrarte.";
   resultado.focus();
+  return;
+  }
+
+  const datos = Object.fromEntries(campos.map(campo => [campo.name, campo.value]));
+  enviando = true;
+  botonEnviar.disabled = true;
+  campos.forEach(campo => { campo.disabled = true; });
+  formulario.setAttribute("aria-busy", "true");
+  botonEnviar.textContent = "Creando cuenta…";
+  resultado.className = "";
+  resultado.textContent = "Enviando tus datos…";
+  const controlador = new AbortController();
+  const limite = setTimeout(() => controlador.abort(), 15000);
+  let enfocar = resultado;
+  try {
+    const respuesta = await fetch("/api/usuarios", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(datos), signal: controlador.signal
+    });
+    const cuerpo = await respuesta.json();
+    if (respuesta.status === 201 && cuerpo.codigo === "USUARIO_CREADO") {
+      resultado.className = "exito";
+      resultado.textContent = "Tu cuenta se creó correctamente. Ya estás registrado en InmoConecta. El inicio de sesión estará disponible en una próxima entrega.";
+      formulario.reset();
+      contrasena.type = "password";
+      mostrarClave.textContent = "Mostrar";
+      mostrarClave.setAttribute("aria-pressed", "false");
+      campos.forEach(campo => campo.removeAttribute("aria-invalid"));
+    } else {
+      resultado.className = "fallo";
+      if (respuesta.status === 409) {
+        resultado.textContent = "Este correo ya está registrado. Utiliza otro correo.";
+        document.querySelector("#error-correo").textContent = "Este correo ya está registrado.";
+        document.querySelector("#correo").setAttribute("aria-invalid", "true");
+        enfocar = document.querySelector("#correo");
+      } else if (respuesta.status === 400) {
+        resultado.textContent = "El servidor rechazó algunos datos. Revisa los campos indicados.";
+        for (const campo of campos) {
+          const mensaje = cuerpo.errores?.[campo.name];
+          if (typeof mensaje === "string") {
+            document.querySelector(`#error-${campo.id}`).textContent = mensaje;
+            campo.setAttribute("aria-invalid", "true");
+            if (enfocar === resultado) enfocar = campo;
+          }
+        }
+      } else {
+        resultado.textContent = "No pudimos completar el registro. Intenta nuevamente en unos momentos.";
+      }
+    }
+  } catch {
+    resultado.className = "fallo";
+    resultado.textContent = "No pudimos confirmar el registro. Comprueba que el servidor esté activo. Si vuelves a intentarlo y el correo ya existe, el primer envío pudo completarse.";
+  } finally {
+    clearTimeout(limite);
+    datos.contrasena = "";
+    enviando = false;
+    campos.forEach(campo => { campo.disabled = false; });
+    botonEnviar.disabled = false;
+    botonEnviar.textContent = "Crear cuenta";
+    formulario.removeAttribute("aria-busy");
+    enfocar.focus();
+  }
 });

@@ -1,0 +1,19 @@
+{
+  "fecha": "2026-11-16T22:46:20.380Z",
+  "resultados": [
+    {
+      "rol": "COMPRADOR",
+      "correo": "t10-comprador-1794869177396@example.com",
+      "id": 3,
+      "creacion": 201,
+      "duplicado": 409
+    },
+    {
+      "rol": "AGENTE",
+      "correo": "t10-agente-1794869177396@example.com",
+      "id": 5,
+      "creacion": 201,
+      "duplicado": 409
+    }
+  ]
+}

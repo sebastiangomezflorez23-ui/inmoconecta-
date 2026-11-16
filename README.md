@@ -29,7 +29,7 @@ Se construyó un formulario con:
 Formulario adaptable a móvil y escritorio, con validaciones en JavaScript,
 mensajes por campo y opción para mostrar u ocultar la contraseña.
 Es una demostración: no crea cuentas, no envía datos y no usa almacenamiento local.
-El backend Java/JDBC incluye registro; la conexión del formulario al endpoint sigue pendiente (T10).
+El backend Java/JDBC incluye registro y el formulario ya se conecta al abrirlo desde el servidor. Consulta [T10: ejecución y pruebas](docs/t10-integracion.md). La apertura como archivo conserva la demostración sin envío.
 
 ## Cómo probar este avance
 

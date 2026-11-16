@@ -64,3 +64,5 @@ HU-02 permanece En curso hasta revisión e integración. HU-01 y T10 mantienen s
 ## Límites de la entrega
 
 No hay publicaciones reales, detalles de inmuebles, contacto con agentes ni inicio de sesión. El catálogo reside en JavaScript, sin persistencia. El registro del navegador sigue en demostración; el backend Java/JDBC se trabaja por separado. Ilustraciones SVG originales incluidas en el repositorio, sin recursos externos.
+
+Actualización T10: al servir la página desde Java, el formulario sí registra en MySQL. Al abrirla como archivo mantiene la demo. Véase [integración y pruebas actuales](t10-integracion.md).

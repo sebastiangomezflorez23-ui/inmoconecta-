@@ -24,7 +24,8 @@ public class Servidor {
             throw new IllegalArgumentException("Puerto permitido: 1 a 65535.");
         }
         HttpServer servidor = HttpServer.create(new InetSocketAddress("127.0.0.1", puerto), 0);
-        servidor.createContext("/", Servidor::atender);
+        servidor.createContext("/", new InterfazHandler(java.nio.file.Path.of("frontend")));
+        servidor.createContext("/api/estado", Servidor::atender);
         servidor.createContext("/api/usuarios", new RegistroHandler(new UsuarioDao()));
         var ejecutor = Executors.newFixedThreadPool(4);
         servidor.setExecutor(ejecutor);
@@ -33,7 +34,7 @@ public class Servidor {
             ejecutor.shutdownNow();
         }));
         servidor.start();
-        System.out.println("Servidor activo: http://127.0.0.1:" + puerto + "/api/estado");
+        System.out.println("Abre InmoConecta: http://127.0.0.1:" + puerto + "/");
         System.out.println("POST /api/usuarios disponible. Requiere DB_USER y DB_PASSWORD.");
         System.out.println("Para detener: Ctrl+C.");
     }

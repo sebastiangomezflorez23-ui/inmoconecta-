@@ -32,3 +32,8 @@ document.querySelector("#restablecer").addEventListener("click", () => {
   mostrarPropiedades();
 });
 mostrarPropiedades();
+
+// La misma interfaz conserva una presentación sin servidor al abrirla como archivo.
+document.querySelector("#descripcion-registro").textContent = location.protocol === "file:"
+  ? "Prueba el formulario como comprador o agente. En modo archivo solo se validan los datos; no se crea una cuenta."
+  : "Crea tu cuenta como comprador o agente. El registro confirma el resultado después de guardar tus datos.";
