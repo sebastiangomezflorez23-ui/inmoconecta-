@@ -9,6 +9,12 @@ propiedades en venta o arriendo.
 - Servidor: Java 21 con HttpServer del JDK y acceso a MySQL mediante JDBC.
 - Base de datos: MySQL.
 
+## Inicio — HU-02 (demo visible)
+
+Abre `frontend/index.html` con doble clic. Incluye catálogo ficticio, filtros por operación y municipio, diseño adaptable y acceso al formulario. Funciona sin MySQL ni internet.
+
+Consulta [historia, checklist y guion](docs/hu02-inicio-demo.md) y las capturas en `docs/evidencias/hu02/`.
+
 ## Primer avance — HU-01 Registro de usuario
 
 Se construyó un formulario con:
@@ -23,11 +29,11 @@ Se construyó un formulario con:
 Formulario adaptable a móvil y escritorio, con validaciones en JavaScript,
 mensajes por campo y opción para mostrar u ocultar la contraseña.
 Es una demostración: no crea cuentas, no envía datos y no usa almacenamiento local.
-El registro real y la conexión con MySQL todavía no están implementados.
+El backend Java/JDBC incluye registro y el formulario ya se conecta al abrirlo desde el servidor. Consulta [T10: ejecución y pruebas](docs/t10-integracion.md). La apertura como archivo conserva la demostración sin envío.
 
 ## Cómo probar este avance
 
-Abre `frontend/index.html` en tu navegador. No requiere instalaciones ni servidor.
+Abre `frontend/registro.html` en tu navegador para probar HU-01. No requiere instalaciones ni servidor.
 También puedes abrirlo con Live Server desde VS Code si ya tienes esa extensión.
 
 1. Pulsa “Validar registro” con el formulario vacío: aparecen errores y el foco
@@ -53,7 +59,7 @@ Usa datos ficticios durante las pruebas.
 Estas reglas deben repetirse en el servidor: las validaciones del navegador se pueden eludir.
 La longitud de contraseña es una propuesta de este avance, pendiente de acuerdo del equipo.
 
-## Continuación para el compañero
+## Plan original del backend (ver estado actualizado en Jira)
 
 1. Ejecutar el servidor Java 21 y preparar la conexión a MySQL mediante JDBC y configuración local.
 2. Acordar el contrato del endpoint de registro antes de conectar el formulario.

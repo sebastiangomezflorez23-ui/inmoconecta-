@@ -55,3 +55,5 @@ footer { text-align: center; padding: 20px 24px 32px; color: var(--gris); font-s
   .tarjeta { padding: 23px 18px; }
   .fila { grid-template-columns: 1fr; gap: 0; }
 }
+
+button:disabled { opacity: .65; cursor: wait; }
