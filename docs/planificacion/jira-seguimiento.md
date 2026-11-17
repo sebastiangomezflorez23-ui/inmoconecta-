@@ -44,7 +44,31 @@ T17 contrato en preparación; T18 migración preparada para revisión, aún no a
 
 Se crearon 24 dependencias entre historias. Se conservan T01–T16 y las claves existentes. No se iniciaron sprints ni se asignaron personas sin acordar capacidad. T09 pasó a Listo después de confirmar implementación, pruebas y PR #6 integrado. La comprobación tras reiniciar Java no tiene evidencia nueva.
 
-Rama de preparación: codex/hu03-plan-acceso, actualizada por fast-forward sobre origin/main (2061b). PR #6 integrado 14/11 y PR #7 integrado 16/11, comprobados por API GitHub el 17/11. La revisión docente sigue pendiente; no se ha demostrado un reinicio específico de Java.
+Rama de preparación renombrada: HU-03-inicio-sesion, basada en origin/main (2061b). PR #6 integrado 14/11 y PR #7 integrado 16/11, comprobados por API GitHub el 17/11. La revisión docente sigue pendiente; no se ha demostrado un reinicio específico de Java.
 
 
 T24 UML/diseño: NMCNCT2-45. T25 despliegue/no funcionales: NMCNCT2-46. Ambas Por hacer, etapa 6.
+
+## Sprint 1 - Inicio, registro y acceso
+
+Sprint existente 68, tablero 69. Preparado, sin iniciar; fechas y capacidad pendientes de acordar.
+
+Objetivo: demostrar inicio, registro persistente en MySQL, inicio y cierre seguro de sesión.
+
+| Orden | Historia | Trabajo restante |
+| --- | --- | --- |
+| 1 | HU-01 / NMCNCT2-3 | Cerrar T04, T05 y T11 con evidencia y revisión; comprobar persistencia tras reinicio real. |
+| 2 | HU-02 / NMCNCT2-15 | Completar revisión docente T16 de la demo integrada. |
+| 3 | HU-03 / NMCNCT2-25 | T17 contrato, T18 migración, T19 autenticación, T20 interfaz y T21 pruebas. |
+| 4 | HU-04 / NMCNCT2-26 | T22 salida/vencimiento y T23 pruebas de acceso privado. |
+
+HU-05 a HU-15 y T24/T25 permanecen en backlog. Conservar estados reales y subtareas existentes; no dar por aceptada una historia por incluirla en el sprint.
+
+## Ramas por historia
+
+Convención acordada: HU-XX-descripcion, sin prefijo codex. Ramas del trabajo nuevo:
+
+- HU-03-inicio-sesion: rama actual, contiene preparación del contrato y migración.
+- HU-04-cierre-sesion: creada desde origin/main; actualizarla con main después de integrar HU-03 antes de implementar el cierre.
+
+Las ramas antiguas conservan su nombre histórico. Para siguientes historias crear su rama desde main actualizado al comenzar, por ejemplo HU-05-publicar-propiedad. No crear ramas futuras con bases desactualizadas.
