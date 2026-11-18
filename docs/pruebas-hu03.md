@@ -2,6 +2,8 @@
 
 18/11/2026. Rama HU-03-inicio-sesion. Java 21, HttpServer y JDBC, sin Spring Boot.
 
+Actualización local: migración 003 aplicada y verificada el 18/11/2026; cuatro usuarios preservados. Respaldo y comprobación en [evidencia de migración](evidencias/hu03/migracion-local.md). No repetirla en esta base. La suite JDBC real sigue pendiente de ejecución con la contraseña introducida por el usuario en su terminal.
+
 ## Implementado
 
 - POST /api/login y GET /api/sesion; usuario público, rol leído en servidor.
@@ -28,7 +30,7 @@ Estas pruebas NO verifican el SQL ni acreditan concurrencia transaccional, permi
 
 ## Siguiente validación local
 
-1. Respaldar la base local y revisar/aplicar una sola vez database/003_preparar_acceso.sql desde MySQL Workbench conectado como administrador. Si ya está aplicada, no repetir ALTER TABLE. Conservar usuarios y hashes actuales.
+1. Completado en esta base local: respaldo y aplicación de database/003_preparar_acceso.sql. Para otra instalación, respaldar y revisar antes de aplicarla una vez. No repetir ALTER TABLE en la base actual.
 2. En Git Bash, desde la raíz del proyecto, ejecutar `bash backend/scripts/probar-hu03-mysql.sh`. La contraseña se introduce solo en la terminal. Requiere los JAR locales usados por iniciar-t09.sh.
 3. La prueba crea dos usuarios ficticios con correo único, comprueba acceso, rollback, tres fallos concurrentes y sesión vencida. Elimina sus sesiones al terminar, conserva sus usuarios como evidencia. No modifica usuarios anteriores. Esta suite está preparada y compilada, pero NO ejecutada todavía.
 4. Iniciar `bash backend/scripts/iniciar-t09.sh`, abrir http://127.0.0.1:8080/login.html y usar una cuenta de prueba registrada por la interfaz.

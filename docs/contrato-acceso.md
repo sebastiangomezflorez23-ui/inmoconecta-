@@ -1,7 +1,7 @@
 # HU-03 y HU-04 — Contrato de acceso
 
 Preparación del 17/11/2026. Jira: HU-03 NMCNCT2-25 y HU-04 NMCNCT2-26.
-Actualización 18/11/2026: /api/login, /api/sesion y las pantallas están implementados en HU-03-inicio-sesion y probados con repositorio simulado. Migración y validación MySQL real pendientes. /api/logout pertenece a HU-04 y aún no está implementado. Evidencias y ejecución en pruebas-hu03.md.
+Actualización 18/11/2026: /api/login, /api/sesion y las pantallas están implementados en HU-03-inicio-sesion y probados con repositorio simulado. Migración local aplicada el 18/11/2026; validación JDBC real pendiente. /api/logout pertenece a HU-04 y aún no está implementado. Evidencias y ejecución en pruebas-hu03.md.
 
 ## Decisiones del primer incremento
 
@@ -35,7 +35,7 @@ El mensaje genérico informa el tiempo de bloqueo sin permitir consultar el esta
 
 ## Persistencia y concurrencia
 
-Migración propuesta: database/003_preparar_acceso.sql, una sola ejecución administrativa. Aún no aplicada. Preserva datos actuales y solo concede UPDATE de los campos de bloqueo a la cuenta de aplicación; no permite cambiar roles.
+Migración propuesta: database/003_preparar_acceso.sql, una sola ejecución administrativa. Aplicada localmente el 18/11/2026 (ver docs/evidencias/hu03/migracion-local.md). Preserva datos actuales y solo concede UPDATE de los campos de bloqueo a la cuenta de aplicación; no permite cambiar roles.
 
 Implementar login en una transacción con SELECT ... FOR UPDATE del usuario. Dentro de ella: comprobar bloqueo y expiración, verificar contraseña, actualizar contador o reiniciarlo y crear sesión si corresponde. Commit antes de devolver cookie. En error, rollback y cierre de conexión. Las pruebas simultáneas deben demostrar que no se pierden intentos ni se emiten sesiones a una cuenta ya bloqueada.
 

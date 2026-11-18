@@ -17,7 +17,7 @@ Detén el servidor con Ctrl+C. No publiques credenciales en Git.
 - Inicio y catálogo ficticio, registro con validación y persistencia MySQL.
 - HU-03: login y consulta de sesión implementados; validación MySQL pendiente.
 - El registro requiere esquema 001 y permisos 002 ya configurados.
-- El login requiere aplicar una sola vez database/003_preparar_acceso.sql,
+- El login requiere database/003_preparar_acceso.sql (ya aplicada localmente el 18/11/2026); para otra instalación, aplicarla una sola vez,
   después de respaldo y revisión administrativa. No repetir la migración.
 - GET /api/estado confirma que HTTP está activo; no verifica la base de datos.
 - El servidor escucha únicamente en 127.0.0.1; sirve frontend desde el mismo origen.

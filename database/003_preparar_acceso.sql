@@ -1,4 +1,5 @@
--- PREPARACIÓN HU-03: revisar antes de aplicar. Aún no ejecutada por el asistente.
+-- HU-03: aplicada en la base local el 18/11/2026. NO repetir allí.
+-- Para otra instalación, revisar antes de aplicar. Evidencia: docs/evidencias/hu03/migracion-local.md.
 -- Ejecutar una vez, como administrador, sobre el esquema creado por 001.
 -- Hacer respaldo de desarrollo antes de migrar. El DDL de MySQL hace commit
 -- implícito: no presentar un ROLLBACK como recuperación de este archivo.
