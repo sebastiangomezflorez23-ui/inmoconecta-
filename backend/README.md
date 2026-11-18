@@ -1,50 +1,42 @@
 # Servidor de InmoConecta
 
-Base académica en Java 21 con HttpServer del JDK, sin framework web ni Maven.
-El acceso futuro a MySQL será mediante JDBC y MySQL Connector/J.
+Java 21 HttpServer, JDBC y MySQL; sin framework web ni Maven.
 
-## Ejecutar desde la raíz del repositorio
+## Ejecutar desde Git Bash en la raíz
 
-En Git Bash o PowerShell:
-
-```text
-javac --add-modules jdk.httpserver -encoding UTF-8 -d backend/out backend/src/com/inmoconecta/Servidor.java
-java --add-modules jdk.httpserver -cp backend/out com.inmoconecta.Servidor
+```bash
+bash backend/scripts/iniciar-t09.sh
 ```
 
-Abre http://127.0.0.1:8080/api/estado en el navegador. Respuesta esperada:
+El script compila el servidor, prepara los JAR necesarios y solicita la contraseña
+sin mostrarla. Usa inmoconecta_app, nunca root. Abre http://127.0.0.1:8080/.
+Detén el servidor con Ctrl+C. No publiques credenciales en Git.
 
-```json
-{"estado":"activo","registroDisponible":false}
+## Funciones y requisitos
+
+- Inicio y catálogo ficticio, registro con validación y persistencia MySQL.
+- HU-03: login y consulta de sesión implementados; validación MySQL pendiente.
+- El registro requiere esquema 001 y permisos 002 ya configurados.
+- El login requiere aplicar una sola vez database/003_preparar_acceso.sql,
+  después de respaldo y revisión administrativa. No repetir la migración.
+- GET /api/estado confirma que HTTP está activo; no verifica la base de datos.
+- El servidor escucha únicamente en 127.0.0.1; sirve frontend desde el mismo origen.
+- El catálogo continúa siendo una demo. Logout queda pendiente en HU-04.
+
+## Pruebas
+
+```bash
+bash backend/scripts/probar-t09.sh
+java -cp 'backend/out;backend/lib/*' com.inmoconecta.PruebasAcceso
 ```
 
-Detén con Ctrl+C. Si el puerto está ocupado, añade otro puerto al comando:
+El primer script compila fuentes y pruebas. Para HU-03 con MySQL real:
 
-```text
-java --add-modules jdk.httpserver -cp backend/out com.inmoconecta.Servidor 8081
+```bash
+bash backend/scripts/probar-hu03-mysql.sh
 ```
 
-## Explicación
+Requiere migración 003 y JAR locales. Crea dos usuarios ficticios de evidencia;
+no modifica usuarios anteriores. No se ha ejecutado aún en la base del usuario.
 
-- Servidor.java inicia el servidor HTTP y atiende la ruta de comprobación.
-- javac compila; java ejecuta. Las clases en out se excluyen de Git.
-- GET /api/estado comprueba HTTP, no la conexión a MySQL.
-- Una ruta inexistente devuelve 404; un método no admitido devuelve 405.
-- El servidor escucha solo en el equipo local.
-
-El formulario se sigue abriendo desde frontend/index.html. Todavía no se conecta
-al servidor. No hay registro, autenticación ni persistencia implementados.
-
-## Continuación paso a paso
-
-1. T05: acordar contrato HTTP, campos JSON, roles, límites y errores.
-2. T07: crear Usuario y el esquema MySQL con correo único.
-3. T08: incorporar Connector/J y configurar JDBC mediante variables de entorno.
-   Usar PreparedStatement y try-with-resources; no subir credenciales.
-4. T09: separar atención HTTP, validación y acceso a datos en clases Java.
-   Aplicar hash con salt mediante biblioteca; usar un analizador JSON mantenido,
-   no expresiones regulares para interpretar JSON.
-5. T10: conectar fetch y configurar origen permitido si se sirve por separado.
-6. T11: probar ambos roles, duplicados, errores y persistencia.
-
-La base local debe revisarse y publicarse mediante commit y PR antes de cerrar T06.
+Consulta ../docs/pruebas-hu03.md para evidencias y verificaciones pendientes.

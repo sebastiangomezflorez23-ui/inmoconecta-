@@ -28,8 +28,10 @@ Se construyó un formulario con:
 
 Formulario adaptable a móvil y escritorio, con validaciones en JavaScript,
 mensajes por campo y opción para mostrar u ocultar la contraseña.
-Es una demostración: no crea cuentas, no envía datos y no usa almacenamiento local.
+Cuando se abre como archivo, es una demostración: no crea cuentas ni envía datos.
 El backend Java/JDBC incluye registro y el formulario ya se conecta al abrirlo desde el servidor. Consulta [T10: ejecución y pruebas](docs/t10-integracion.md). La apertura como archivo conserva la demostración sin envío.
+
+HU-03 incorpora inicio de sesión y página de cuenta, con bloqueo por intentos y cookie de sesión. Pruebas HTTP y navegador con repositorio simulado verificadas; la migración 003 y las pruebas MySQL del acceso siguen pendientes. Consulta [ejecución y checklist HU-03](docs/pruebas-hu03.md). El cierre manual de sesión se implementará en HU-04.
 
 ## Cómo probar este avance
 

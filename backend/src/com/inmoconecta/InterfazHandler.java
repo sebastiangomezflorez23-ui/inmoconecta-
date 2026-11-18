@@ -13,6 +13,8 @@ public final class InterfazHandler implements HttpHandler {
     private static final Map<String, String> ARCHIVOS = Map.ofEntries(
         Map.entry("/", "index.html"), Map.entry("/index.html", "index.html"),
         Map.entry("/registro.html", "registro.html"),
+        Map.entry("/login.html", "login.html"), Map.entry("/cuenta.html", "cuenta.html"),
+        Map.entry("/js/acceso.js", "js/acceso.js"),
         Map.entry("/css/inicio.css", "css/inicio.css"), Map.entry("/css/styles.css", "css/styles.css"),
         Map.entry("/js/inicio.js", "js/inicio.js"), Map.entry("/js/registro.js", "js/registro.js"),
         Map.entry("/assets/casa.svg", "assets/casa.svg"),

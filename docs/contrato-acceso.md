@@ -1,7 +1,7 @@
 # HU-03 y HU-04 — Contrato de acceso
 
 Preparación del 17/11/2026. Jira: HU-03 NMCNCT2-25 y HU-04 NMCNCT2-26.
-Este contrato y la migración son preparación; aún no existen los endpoints ni la pantalla de login.
+Actualización 18/11/2026: /api/login, /api/sesion y las pantallas están implementados en HU-03-inicio-sesion y probados con repositorio simulado. Migración y validación MySQL real pendientes. /api/logout pertenece a HU-04 y aún no está implementado. Evidencias y ejecución en pruebas-hu03.md.
 
 ## Decisiones del primer incremento
 
@@ -45,7 +45,7 @@ Usar tiempos UTC para campos de bloqueo y sesiones. Guardar únicamente SHA-256 
 
 Cookie propuesta: inmoconecta_sesion; Path=/; HttpOnly; SameSite=Strict; Max-Age=1800. Secure obligatorio en despliegue HTTPS; desarrollo limitado a loopback HTTP. No fijar Domain.
 
-Login y logout validarán el Origin contra el origen local configurado; rechazar Origin null o ajeno. Definir una política explícita para clientes sin Origin y usar pruebas HTTP coherentes con ella; no permitir un comodín CORS. Las futuras mutaciones privadas deberán usar la misma defensa y, si el alcance exige otros orígenes, un mecanismo CSRF explícito.
+Login exige Origin exactamente igual al origen local configurado, incluido curl; rechaza Origin ausente, null o ajeno. GET de sesión permite ausencia de Origin, pero rechaza uno ajeno y Sec-Fetch-Site cross-site. No se permite un comodín CORS. Logout y futuras mutaciones privadas deberán usar la misma defensa y, si el alcance exige otros orígenes, un mecanismo CSRF explícito.
 
 Respuestas privadas con Cache-Control: no-store. El HTML de un panel no es una barrera: toda API privada comprueba sesión y rol. Logout elimina la cookie con los mismos atributos y Max-Age=0. Una cookie robada, vencida o revocada no debe autorizar acciones.
 

@@ -40,7 +40,7 @@ Actualizado 17/11/2026. Las claves siguientes ya existen en NMCNCT2. No volver a
 - T22: NMCNCT2-43
 - T23: NMCNCT2-44
 
-T17 contrato en preparación; T18 migración preparada para revisión, aún no aplicada. T19–T23 pendientes. No se implementaron todavía login ni logout.
+Actualización 18/11/2026: T17 contrato implementado con valores configurables pendientes de aceptación. T18 migración preparada, aún no aplicada. T19/T20/T21 En curso: login y cuenta implementados, pruebas HTTP/navegador y reglas correctas; falta integración MySQL real, revisión e integración del PR. T22/T23 pendientes: logout aún no implementado. Detalle en docs/pruebas-hu03.md.
 
 Se crearon 24 dependencias entre historias. Se conservan T01–T16 y las claves existentes. No se iniciaron sprints ni se asignaron personas sin acordar capacidad. T09 pasó a Listo después de confirmar implementación, pruebas y PR #6 integrado. La comprobación tras reiniciar Java no tiene evidencia nueva.
 

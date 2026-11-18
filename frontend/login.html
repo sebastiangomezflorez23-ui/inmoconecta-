@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Iniciar sesión | InmoConecta</title><link rel="stylesheet" href="css/styles.css"><script src="js/acceso.js" defer></script></head>
+<body>
+<header class="cabecera"><a class="marca" href="index.html">Inmo<span>Conecta</span></a><a href="index.html">Volver al inicio</a></header>
+<main class="contenedor">
+  <section class="presentacion"><p class="etiqueta">TU PRÓXIMO CAPÍTULO</p><h1>Qué bueno tenerte de vuelta.</h1><p>Ingresa a tu cuenta y continúa conectando con nuevas oportunidades.</p><div class="beneficio"><span aria-hidden="true">01</span><div><h2>Tu cuenta, tu espacio</h2><p>Accede con el correo que utilizaste al registrarte.</p></div></div><p class="nota">InmoConecta · Proyecto académico</p></section>
+  <section class="tarjeta" aria-labelledby="titulo-formulario"><p class="etiqueta">BIENVENIDO DE NUEVO</p><h2 id="titulo-formulario">Inicia sesión</h2><p class="introduccion">Escribe tu correo y contraseña.</p>
+    <form id="formulario-acceso">
+      <div class="campo"><label for="correo">Correo electrónico</label><input id="correo" name="correo" type="email" autocomplete="username" maxlength="254" required></div>
+      <div class="campo"><label for="contrasena">Contraseña</label><div class="clave"><input id="contrasena" name="contrasena" type="password" autocomplete="current-password" maxlength="128" required><button id="mostrar-clave" type="button" aria-controls="contrasena" aria-pressed="false">Mostrar</button></div></div>
+      <button class="boton-principal" type="submit">Entrar a mi cuenta</button>
+    </form>
+    <p id="resultado" role="status" aria-live="polite" tabindex="-1"></p>
+    <p>¿Aún no tienes cuenta? <a href="registro.html">Regístrate aquí</a>.</p>
+    <noscript>Activa JavaScript para iniciar sesión.</noscript>
+  </section>
+</main><footer>InmoConecta · Personas, espacios y oportunidades.</footer>
+</body></html>

@@ -27,6 +27,9 @@ public class Servidor {
         servidor.createContext("/", new InterfazHandler(java.nio.file.Path.of("frontend")));
         servidor.createContext("/api/estado", Servidor::atender);
         servidor.createContext("/api/usuarios", new RegistroHandler(new UsuarioDao()));
+        var acceso = new com.inmoconecta.acceso.AccesoHandler(new com.inmoconecta.datos.AccesoDao(), "http://127.0.0.1:" + puerto);
+        servidor.createContext("/api/login", acceso);
+        servidor.createContext("/api/sesion", acceso);
         var ejecutor = Executors.newFixedThreadPool(4);
         servidor.setExecutor(ejecutor);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
